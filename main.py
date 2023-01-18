@@ -5,45 +5,45 @@ def calculate_bac():
     # metabolism rate for men: 0.015; for women: 0.01
     # using 0.01 for simplicity
     m = 0.01
-    weight = float(input("What is your weight in kg? "))
-    gender = input("What is your gender (m/f)? ")
+    weight = float(input("Bitte geben Sie ihr Gewicht in Kilogramm an. "))
+    gender = input("Bitte geben Sie ihr Geschlecht an (m/w). ")
     if gender == "m":
         r = 0.68
-    elif gender == "f":
+    elif gender == "w":
         r = 0.55
     else:
-        print("Invalid input. Using default value for 'm'")
+        print("Ungültige Eingabe. Berechnungen werden standartisiert für das männliche Geschlecht durchgeführt.")
         r = 0.68
     bac = 0
-    beer = float(input("How many liters of beer have you consumed? "))
-    wine = float(input("How many liters of wine have you consumed? "))
-    cocktail = float(input("How many liters of cocktail have you consumed? "))
-    schnaps = float(input("How many liters of schnaps have you consumed? "))
-    bac += (beer * 00.514) / (weight * r)
-    bac += (wine * 00.1269) / (weight * r)
-    bac += (cocktail * 00.1800) / (weight * r)
-    bac += (schnaps * 00.4000) / (weight * r)
-    time_elapsed = int(input("How much time has passed since your first drink in minutes? "))
+    beer = float(input("Wie viele Liter Bier haben Sie konsumiert? (1 Flaschenbier = ~0.33l "))
+    wine = float(input("Wie viele Liter Wein haben Sie konsumiert? (1 Glas Wein = ~0.185l "))
+    cocktail = float(input("Wie viele Liter Cocktails oder Mischgetränke haben Sie konsumiert? (1 Cocktail = ~0.2l "))
+    schnaps = float(input("Wie viele Liter harten Alkohol haben Sie konsumiert? (1 Shot = ~0.05l "))
+    bac += (beer * 0.0514) / (weight * r)
+    bac += (wine * 0.01269) / (weight * r)
+    bac += (cocktail * 0.01800) / (weight * r)
+    bac += (schnaps * 0.04000) / (weight * r)
+    time_elapsed = int(input("Wie viel Zeit ist seit dem Start des Alkoholkonsums in Minuten vergangen? "))
     bac = bac * 100 - (m * (time_elapsed / 60))
     bac = round(bac, 2)
     if bac <= 0:
-        print("You are sober.")
+        print("Sie sind nüchtern.")
     else:
         sober_time = bac / m
-        print(f"Your blood alcohol content is: {bac}%")
+        print(f"Ihr Blutalkoholgehalt ist: {bac}%")
         if beer > 0 and wine > 0 and cocktail > 0 and schnaps > 0:
-            print("Your upcoming hangover will be severe due to mixing multiple types of alcohol.")
+            print("Durch Mischen verschiedenen Alkohols wird Ihr Kater deutlich spürbar sein.")
         elif bac < 0.2:
-            print("Your upcoming hangover will be light.")
+            print("Es ist mit einem leichten Kater zu rechnen.")
         elif bac < 0.5:
-            print("Your upcoming hangover will be moderate.")
+            print("Es ist mit einem mittelstarken Kater zu rechnen.")
         else:
-            print("Your upcoming hangover will be severe.")
-        print(f"You will be sober in approximately {sober_time:.2f} hours.")
-        hangover_cures = ["drink water", "sleep", "take painkillers", "eat a healthy meal", "exercise", "take a shower", "drink sports drink", "drink coconut water", "drink tea", "take a nap", "avoid alcohol", "avoid caffeine", "avoid cigarettes", "avoid greasy foods", "avoid bright lights", "avoid loud noises", "avoid stress", "avoid spicy food", "avoid any other alcohol"]
-        print("A recommended hangover cure is to: " + random.choice(hangover_cures))
+            print("Es wird Ihnen Morgen furchtbar gehen.")
+        print(f"Sie werden in ungefähr {sober_time:.2f} Stunden wieder nüchtern sein.")
+        hangover_cures = ["Wasser trinken", "Schlafen", "Rohes Ei konsumieren", "Sport betreiben", "Schmerzmittel konsumieren", "Kalt duschen", "Elektrolyte tanken (Gatorade etc.)", "Kokosnusswasser trinken", "Tee trinken", "Massage machen lassen", "Sich schwören nie mehr zu trinken", "Koffein vermeiden", "Nikotin vermeiden", "Fettiges Essen vermeiden", "In der Dunkelheit bleiben", "Laute Geräusche vermeiden", "Spazieren gehen", "ein Konterbier trinken", "LOTR-/Star Wars Marathon"]
+        print("Eine bewährte Katerkur ist: " + random.choice(hangover_cures))
         if bac >= 0.5:
-            print("It is illegal to operate a vehicle in this state.")
+            print("In Ihrem Zustand ist es verboten Motorfahrzeuge und Fahrräder zu nutzen.")
         elif bac >= 0.2:
-            print("It is not recommended to operate a vehicle in this state.")
+            print("Es ist nicht zu empfehlen in diesem Zustand ein Motorfahrzeug zu lenken.")
 calculate_bac()

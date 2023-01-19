@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Promillerechner</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-5">Promillerechner</h1>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Ergebnis</h2>
+                        {% if bac <= 0 %}
+                        <p>Sie sind nüchtern.</p>
+                        {% else %}
+                        <p>Ihr Blutalkoholgehalt ist: {{ bac }}%</p>
+                        {% if beer > 0 and wine > 0 and cocktail > 0 and schnaps > 0 %}
+                        <p>Durch Mischen verschiedenen Alkohols wird Ihr Kater deutlich spürbar sein.</p>
+                        {% elif bac < 0.2 %}
+                        <p>Es ist mit einem leichten Kater zu rechnen.</p>
+                        {% elif bac < 0.5 %}
+                        <p>Es ist mit einem mittelstarken Kater zu rechnen.</p>
+                        {% else %}
+                        <p>Es wird Ihnen Morgen furchtbar gehen.</p>
+                        {% endif %}
+                        <p>Sie werden in ungefähr {{ sober_time }} Stunden wieder nüchtern sein.</p>
+                        <h2>Hangover cures</h2>
+                        <ul>
+                            {% for cure in hangover_cures %}
+                            <li>{{ cure }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,4 +1,22 @@
+from flask import Flask, render_template
 import random
+
+app = Flask("Promillerechner")
+
+
+@app.route('/feedback')
+def feedback():
+    return render_template('feedback.html')
+
+
+@app.route('/hello')
+def hello_world():
+    return render_template('hello.html')
+
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
+
 
 def calculate_bac():
     # Constants for alcohol density and metabolism rate
@@ -40,10 +58,14 @@ def calculate_bac():
         else:
             print("Es wird Ihnen Morgen furchtbar gehen.")
         print(f"Sie werden in ungefähr {sober_time:.2f} Stunden wieder nüchtern sein.")
-        hangover_cures = ["Wasser trinken", "Schlafen", "Rohes Ei konsumieren", "Sport betreiben", "Schmerzmittel konsumieren", "Kalt duschen", "Elektrolyte tanken (Gatorade etc.)", "Kokosnusswasser trinken", "Tee trinken", "Massage machen lassen", "Sich schwören nie mehr zu trinken", "Koffein vermeiden", "Nikotin vermeiden", "Fettiges Essen vermeiden", "In der Dunkelheit bleiben", "Laute Geräusche vermeiden", "Spazieren gehen", "ein Konterbier trinken", "LOTR-/Star Wars Marathon"]
+        hangover_cures = ["Wasser trinken", "Schlafen", "Rohes Ei konsumieren", "Sport betreiben",
+                          "Schmerzmittel konsumieren", "Kalt duschen", "Elektrolyte tanken (Gatorade etc.)",
+                          "Kokosnusswasser trinken", "Tee trinken", "Massage machen lassen",
+                          "Sich schwören nie mehr zu trinken", "Koffein vermeiden", "Nikotin vermeiden",
+                          "Fettiges Essen vermeiden", "In der Dunkelheit bleiben", "Laute Geräusche vermeiden",
+                          "Spazieren gehen", "ein Konterbier trinken", "LOTR-/Star Wars Marathon"]
         print("Eine bewährte Katerkur ist: " + random.choice(hangover_cures))
         if bac >= 0.5:
             print("In Ihrem Zustand ist es verboten Motorfahrzeuge und Fahrräder zu nutzen.")
         elif bac >= 0.2:
             print("Es ist nicht zu empfehlen in diesem Zustand ein Motorfahrzeug zu lenken.")
-calculate_bac()

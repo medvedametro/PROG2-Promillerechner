@@ -1,44 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <title>Promillerechner Feedback</title>
 </head>
 <body>
-    <h1>Promillerechner Feedback</h1>
-    <p>Ihr Blutalkoholgehalt ist: {{ results }}%</p>
+    <div class="container">
+        <h1 class="text-center my-5">Promillerechner Feedback</h1>
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title ">Ihre Daten:</h2>
+                        <p class="card-text">Ihr Blutalkoholgehalt ist: {{ bac }}%</p>
+                        {% if bac <= 0 %}
+                            <p>Sie sind nüchtern.</p>
+                        {% else %}
+                            {% if bac < 0.2 %}
+                                <p>Es ist mit einem leichten Kater zu rechnen.</p>
+                            {% elif bac < 0.5 %}
+                                <p>Es ist mit einem mittelstarken Kater zu rechnen.</p>
+                            {% else %}
+                                <p>Es wird Ihnen Morgen furchtbar gehen.</p>
+                            {% endif %}
+                        {% endif %}
 
-    {% if bac <= 0 %}
-        <p>Sie sind nüchtern.</p>
-    {% else %}
-        {% if bac < 0.2 %}
-            <p>Es ist mit einem leichten Kater zu rechnen.</p>
-        {% elif bac < 0.5 %}
-            <p>Es ist mit einem mittelstarken Kater zu rechnen.</p>
-        {% else %}
-            <p>Es wird Ihnen Morgen furchtbar gehen.</p>
-        {% endif %}
-    {% endif %}
+                        {% if bac >= 0.5 %}
+                            <p> In Ihrem Zustand ist es verboten Motorfahrzeuge und Fahrräder zu nutzen.</p>
+                        {% elif bac > 0.2 %}
+                            <p> Es ist nicht zu empfehlen in diesem Zustand ein Motorfahrzeug zu lenken.</p>
+                            {% endif %}
 
-    <p>Es dauert ungefähr {{ sober_time }} Stunden, bis Sie wieder nüchtern sind.</p>
-    <p>Einige Tipps um den Kater zu lindern:</p>
-    <ul>
-        <li>Wasser trinken</li>
-        <li>Schlafen</li>
-        <li>Rohes Ei konsumieren</li>
-        <li>Sport betreiben</li>
-        <li>Schmerzmittel konsumieren</li>
-        <li>Kalt duschen</li>
-        <li>Elektrolyte tanken (Gatorade etc.)</li>
-        <li>Kokosnusswasser trinken</li>
-        <li>Tee trinken</li>
-        <li>Massage machen lassen</li>
-        <li>Sich schwören nie mehr zu trinken</li>
-        <li>Koffein vermeiden</li>
-        <li>Nikotin vermeiden</li>
-        <li>Fettiges Essen vermeiden</li>
-        <li>In der Dunkelheit bleiben</li>
-        <li>Laute Geräusche vermeiden</li>
-        <li>Spazieren gehen</li>
-    </ul>
+                        <p>Es dauert ungefähr {{ sober_time }} Stunden, bis Sie komplett nüchtern sind.</p>
+
+                        {% if bac <= 0 %}
+                            <p>Geniessen Sie ihren Katerfreien Tag!</p>
+                        {% else %}
+
+                        <p>Einige Tipps um den Kater zu lindern:</p>
+                        <ul>
+                                <li>{{ cure[0] }}</li>
+                                <li>{{ cure[1] }}</li>
+                                <li>{{ cure[2] }}</li>
+                        </ul>
+                        {% endif %}
+                        <form>
+    <input type="button" value="Zurücksetzen" onclick="location.href='http://127.0.0.1:5000/rechner'" />
+</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

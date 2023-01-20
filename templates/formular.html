@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Promillerechner</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Promillerechner</h1>
+        <form action="{{url_for('hello')}}" method="post">
+            <div class="form-group">
+                <label for="weight">Gewicht (in kg):</label>
+                <input type="number" class="form-control" id="weight" name="weight" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Geschlecht:</label>
+                <select class="form-control" id="gender" name="gender" required>
+                    <option>m</option>
+                    <option>w</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="beer">Anzahl Flaschen Bier (0.33l als Standartwert definiert):</label>
+                <input type="number" class="form-control" id="beer" name="beer" required>
+            </div>
+            <div class="form-group">
+                <label for="wine">Anzahl Gläser Wein:</label>
+                <input type="number" class="form-control" id="wine" name="wine" required>
+            </div>
+            <div class="form-group">
+                <label for="cocktail">Anzahl Cocktails/Mischgetränke (2dl Glas als Standardwert definiert) :</label>
+                <input type="number" class="form-control" id="cocktail" name="cocktail" required>
+            </div>
+            <div class="form-group">
+                <label for="schnaps">Anzahl Shots:</label>
+                <input type="number" class="form-control" id="schnaps" name="schnaps" required>
+            </div>
+            <div class="form-group">
+                <label for="time_elapsed">Zeit seit Start des Alkoholkonsums (in Minuten):</label>
+                <input type="number" class="form-control" id="time_elapsed" name="time_elapsed" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Berechnen</button>
+        </form>
+    </div>
+</body>
+</html>

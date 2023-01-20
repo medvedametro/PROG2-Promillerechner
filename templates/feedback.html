@@ -17,9 +17,11 @@
                             <p>Sie sind nüchtern.</p>
                         {% else %}
                             {% if bac < 0.2 %}
-                                <p>Es ist mit einem leichten Kater zu rechnen.</p>
+                                <p>Es ist wenn überhaupt mit einem sehr leichten Kater zu rechnen.</p>
                             {% elif bac < 0.5 %}
-                                <p>Es ist mit einem mittelstarken Kater zu rechnen.</p>
+                                <p>Es ist mit einem leichten bis mittelstarken Kater zu rechnen.</p>
+                        {% elif bac < 0.9 %}
+                                <p>Es ist mit einem deutlichen Kater zu rechnen.</p>
                             {% else %}
                                 <p>Es wird Ihnen Morgen furchtbar gehen.</p>
                             {% endif %}
